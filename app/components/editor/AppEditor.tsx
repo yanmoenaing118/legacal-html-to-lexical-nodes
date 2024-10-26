@@ -25,6 +25,8 @@ import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import CollapsiblePlugin from "./plugins/CollapsiblePlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { CustomQuoteContainer } from "./plugins/CustomQuote/CustomQuoteContainer";
+import { ImageNode } from "./plugins/ImagePlugin/ImageNode";
+import ImagePlugin from "./plugins/ImagePlugin/ImagePlugin";
 export default function AppEditor() {
   const config: InitialConfigType = {
     namespace: "AppEditor",
@@ -45,6 +47,7 @@ export default function AppEditor() {
       // TableRowNode,
       AutoLinkNode,
       LinkNode,
+      ImageNode,
     ],
     onError: (err) => {
       console.log(err);
@@ -58,9 +61,9 @@ export default function AppEditor() {
   };
 
   return (
-    <div className="AppEditor max-w-xl mx-auto">
+    <div className="AppEditor max-w-xl mx-auto mb-96">
       <LexicalComposer initialConfig={config}>
-        {/* <ToolbarPlugin /> */}
+        <ToolbarPlugin />
         <InitDataPlugin />
         <RichTextPlugin
           contentEditable={
@@ -75,6 +78,7 @@ export default function AppEditor() {
         <ListPlugin />
 
         <CollapsiblePlugin />
+        <ImagePlugin />
       </LexicalComposer>
     </div>
   );
