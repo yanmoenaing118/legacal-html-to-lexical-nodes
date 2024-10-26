@@ -54,14 +54,22 @@ p {
   @apply text-[20px] dark:text-white;
 }
 
+p + p {
+  @apply my-4
+}
+
 ul {
-  @apply list-disc pl-5
+  @apply list-disc pl-5;
 }
 
 a {
-  @apply text-red-500 underline cursor-pointer
+  @apply text-red-500 underline cursor-pointer;
 }
 
 ol {
-  @apply list-decimal pl-6
+  @apply list-decimal pl-6;
+}
+
+blockquote {
+  @apply border-l-4 border-blue-500 pl-4 my-4;
 }

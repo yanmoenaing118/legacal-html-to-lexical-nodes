@@ -64,7 +64,7 @@ export default function AppEditor() {
         <InitDataPlugin />
         <RichTextPlugin
           contentEditable={
-            <ContentEditable className="ContentEditable min-h-96 text-xl border ring-0 focus:ring-0 focus-within:ring-0 focus:outline-none" />
+            <ContentEditable className="ContentEditable min-h-96 text-xl  ring-0 focus:ring-0 focus-within:ring-0 focus:outline-none" />
           }
           placeholder={<div>Placeholder</div>}
           ErrorBoundary={LexicalErrorBoundary}
