@@ -20,6 +20,11 @@ export const htmlStirng = `
 </figure>
 <a href="https://www.google.com">Standalone link</a>
 
+<figure class="image right" contenteditable="false" data-image="4145">
+    <img src="https://croucher-public.s3.ap-southeast-1.amazonaws.com/variants/pub_staging/images/images/4145/original/sample_photo_1.jpg/ab4dfa434b5f68af8f6ec5e1d76c6c7cb6ee43a244ce0a1bf3f423c1bc620ea3">
+    <figcaption>Image Caption</figcaption>
+</figure>
+
 `;
 
 // export const htmlStirng = `<figure class="quote full" contenteditable="false">

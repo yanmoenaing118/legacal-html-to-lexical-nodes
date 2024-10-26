@@ -25,7 +25,10 @@ export default function ImagePlugin() {
         INSERT_IMAGE_COMMAND,
         () => {
           editor.update(() => {
-            const imageNode = $createImageNode("fuck");
+            const imageNode = $createImageNode({
+              src: "https://pics.dmm.co.jp/digital/video/1stars984/1stars984jp-5.jpg",
+              caption: "Pretty Yano Ema",
+            });
             $insertNodes([imageNode]);
           });
 

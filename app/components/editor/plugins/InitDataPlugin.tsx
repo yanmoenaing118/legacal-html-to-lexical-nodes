@@ -20,6 +20,7 @@ import {
 import { $createListNode, $createListItemNode, ListType } from "@lexical/list";
 import { $createLinkNode } from "@lexical/link";
 import { $createCustomQuoteContainerhNode } from "./CustomQuote/CustomQuoteContainer";
+import { $createImageNode } from "./ImagePlugin/ImageNode";
 
 function customGenerateNodesFromDOM(
   editor: LexicalEditor,
@@ -118,6 +119,20 @@ function customGenerateNodesFromDOM(
               }
             });
             nodes.push(customQuotecontainer);
+          } else if (element.classList.contains("image")) {
+            const imgSrc = (element.querySelector("img") as HTMLImageElement)
+              .src;
+            const imageCaption = element.querySelector("figcaption");
+            const text =
+              imageCaption && imageCaption.textContent
+                ? imageCaption.textContent
+                : "";
+
+            const imageNode = $createImageNode({
+              src: imgSrc,
+              caption: text,
+            });
+            nodes.push(imageNode);
           }
           break;
         default: {

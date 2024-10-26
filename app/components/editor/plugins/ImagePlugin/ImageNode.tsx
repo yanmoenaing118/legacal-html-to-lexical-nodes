@@ -4,19 +4,21 @@ import { lazy, ReactNode, Suspense } from "react";
 const ImageComponent = lazy(() => import("./ImageComponent"));
 
 export class ImageNode extends DecoratorNode<ReactNode> {
-  __id: string;
+  __src: string;
+  __caption: string;
 
   static getType(): string {
     return "image";
   }
 
   static clone(node: ImageNode): ImageNode {
-    return new ImageNode(node.__id, node.__key);
+    return new ImageNode(node.__src, node.__caption, node.__key);
   }
 
-  constructor(id: string, key?: NodeKey) {
+  constructor(src: string, caption: string, key?: NodeKey) {
     super(key);
-    this.__id = id;
+    this.__src = src;
+    this.__caption = caption;
   }
 
   createDOM(): HTMLElement {
@@ -30,14 +32,20 @@ export class ImageNode extends DecoratorNode<ReactNode> {
   decorate(): ReactNode {
     return (
       <Suspense fallback={null}>
-        <ImageComponent />
+        <ImageComponent src={this.__src} caption={this.__caption} />
       </Suspense>
     );
   }
 }
 
-export function $createImageNode(id: string): ImageNode {
-  return new ImageNode(id);
+export function $createImageNode({
+  src,
+  caption,
+}: {
+  src: string;
+  caption: string;
+}): ImageNode {
+  return new ImageNode(src, caption);
 }
 
 export function $isImageNode(
