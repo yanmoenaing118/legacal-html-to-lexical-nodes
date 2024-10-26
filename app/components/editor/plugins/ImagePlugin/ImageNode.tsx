@@ -1,7 +1,21 @@
-import { DecoratorNode, LexicalNode, NodeKey } from "lexical";
+import {
+  DecoratorNode,
+  LexicalNode,
+  NodeKey,
+  SerializedLexicalNode,
+  Spread,
+} from "lexical";
 import { lazy, ReactNode, Suspense } from "react";
 
 const ImageComponent = lazy(() => import("./ImageComponent"));
+
+export type SerializedImageNode = Spread<
+  {
+    src: string;
+    caption: string;
+  },
+  SerializedLexicalNode
+>;
 
 export class ImageNode extends DecoratorNode<ReactNode> {
   __src: string;
@@ -20,13 +34,35 @@ export class ImageNode extends DecoratorNode<ReactNode> {
     this.__src = src;
     this.__caption = caption;
   }
+  isInline(): boolean {
+      return false
+  }
 
   createDOM(): HTMLElement {
-    return document.createElement("div");
+    const div = document.createElement("div");
+    div.style.display = 'contents';
+    return div
   }
 
   updateDOM(): false {
     return false;
+  }
+
+  static importJSON(serializedImageNode: SerializedImageNode) {
+    const imageNode = new ImageNode(
+      serializedImageNode.src,
+      serializedImageNode.caption
+    );
+    return imageNode;
+  }
+
+  exportJSON() {
+    return {
+      type: "image",
+      version: 1,
+      src: this.__src,
+      caption: this.__caption,
+    };
   }
 
   decorate(): ReactNode {

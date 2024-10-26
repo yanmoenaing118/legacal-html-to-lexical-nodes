@@ -3,7 +3,17 @@ import {
   DOMConversionOutput,
   ElementNode,
   LexicalNode,
+  SerializedLexicalNode,
+  Spread,
 } from "lexical";
+
+// export type SerializedCustomQuoteContainer = Spread<
+//   {
+//     src: string
+//     caption: string;
+//   },
+//   SerializedLexicalNode
+// >;
 
 export class CustomQuoteContainer extends ElementNode {
   static getType(): string {
@@ -29,6 +39,18 @@ export class CustomQuoteContainer extends ElementNode {
         conversion: $convertCustomQuoteContainerElement,
         priority: 0,
       }),
+    };
+  }
+
+  static importJSON() {
+    return new CustomQuoteContainer();
+  }
+
+  exportJSON() {
+    return {
+      ...super.exportJSON(),
+      type: "custom-quote-content",
+      version: 1,
     };
   }
 }

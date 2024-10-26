@@ -13,7 +13,9 @@ function EditorOnChangePlugin() {
     (v: EditorState) => {
       v.read(() => {
         const html = $generateHtmlFromNodes(editor);
-        console.log(html);
+        // console.log(html);
+        const json = editor.getEditorState().toJSON();
+        console.log(json);
       });
     },
     [editor]

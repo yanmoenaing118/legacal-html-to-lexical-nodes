@@ -119,6 +119,7 @@ function customGenerateNodesFromDOM(
               }
             });
             nodes.push(customQuotecontainer);
+            return;
           } else if (element.classList.contains("image")) {
             const imgSrc = (element.querySelector("img") as HTMLImageElement)
               .src;
@@ -133,6 +134,7 @@ function customGenerateNodesFromDOM(
               caption: text,
             });
             nodes.push(imageNode);
+            return;
           }
           break;
         default: {
@@ -177,7 +179,8 @@ export default function InitDataPlugin() {
       $getRoot().select();
 
       // Insert them at a selection.
-      $insertNodes(nodes);
+      // $insertNodes(nodes);
+      nodes.forEach((node) => $insertNodes([node]));
     });
   }, []);
   return null;
