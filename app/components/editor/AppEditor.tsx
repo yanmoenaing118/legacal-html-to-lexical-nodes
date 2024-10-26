@@ -78,7 +78,7 @@ export default function AppEditor() {
         <ListPlugin />
 
         <CollapsiblePlugin />
-        {/* <ImagePlugin /> */}
+        <ImagePlugin />
       </LexicalComposer>
     </div>
   );
