@@ -23,16 +23,16 @@
 // <a href="https://www.google.com">P link 2</a>
 // </p>
 // <figure class="image right" contenteditable="false" data-image="4145">
-//     <img src="https://croucher-public.s3.ap-southeast-1.amazonaws.com/variants/pub_staging/images/images/4145/original/sample_photo_1.jpg/ab4dfa434b5f68af8f6ec5e1d76c6c7cb6ee43a244ce0a1bf3f423c1bc620ea3">
+//     <img src="https://pics.dmm.co.jp/digital/video/1stars984/1stars984jp-5.jpg">
 //     <figcaption>Image Caption</figcaption>
 // </figure>
 
 // `;
 
 export const htmlStirng = `<figure class="image right" contenteditable="false" data-image="4145">
-    <img src="https://croucher-public.s3.ap-southeast-1.amazonaws.com/variants/pub_staging/images/images/4145/original/sample_photo_1.jpg/ab4dfa434b5f68af8f6ec5e1d76c6c7cb6ee43a244ce0a1bf3f423c1bc620ea3">
+    <img src="https://pics.dmm.co.jp/digital/video/1stars984/1stars984jp-5.jpg">
     <figcaption>Image Caption</figcaption>
 </figure><a href="www.google.com">Hello</a><figure class="image right" contenteditable="false" data-image="4145">
-    <img src="https://croucher-public.s3.ap-southeast-1.amazonaws.com/variants/pub_staging/images/images/4145/original/sample_photo_1.jpg/ab4dfa434b5f68af8f6ec5e1d76c6c7cb6ee43a244ce0a1bf3f423c1bc620ea3">
+    <img src="https://pics.dmm.co.jp/digital/video/1stars984/1stars984jp-5.jpg">
     <figcaption>Image Caption</figcaption>
 </figure>`;

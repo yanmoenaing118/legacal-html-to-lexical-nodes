@@ -68,7 +68,7 @@ export class ImageNode extends DecoratorNode<ReactNode> {
   decorate(): ReactNode {
     return (
       <Suspense fallback={null}>
-        <ImageComponent src={this.__src} caption={this.__caption} />
+        <ImageComponent src={this.__src} caption={this.__caption} nodeKey={this.__key} />
       </Suspense>
     );
   }
