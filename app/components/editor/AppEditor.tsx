@@ -24,6 +24,7 @@ import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
 import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import CollapsiblePlugin from "./plugins/CollapsiblePlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
+import { CustomQuoteContainer } from "./plugins/CustomQuote/CustomQuoteContainer";
 export default function AppEditor() {
   const config: InitialConfigType = {
     namespace: "AppEditor",
@@ -36,6 +37,7 @@ export default function AppEditor() {
       ListNode,
       ListItemNode,
       QuoteNode,
+      CustomQuoteContainer,
       // CodeNode,
       // CodeHighlightNode,
       // TableNode,

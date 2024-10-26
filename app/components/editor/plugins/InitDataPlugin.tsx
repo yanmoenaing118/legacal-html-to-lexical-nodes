@@ -12,9 +12,14 @@ import {
   LexicalNode,
 } from "lexical";
 import { $generateNodesFromDOM } from "@lexical/html";
-import { $createHeadingNode, HeadingTagType } from "@lexical/rich-text";
+import {
+  $createHeadingNode,
+  HeadingTagType,
+  $createQuoteNode,
+} from "@lexical/rich-text";
 import { $createListNode, $createListItemNode, ListType } from "@lexical/list";
 import { $createLinkNode } from "@lexical/link";
+import { $createCustomQuoteContainerhNode } from "./CustomQuote/CustomQuoteContainer";
 
 function customGenerateNodesFromDOM(
   editor: LexicalEditor,
@@ -99,8 +104,23 @@ function customGenerateNodesFromDOM(
           nodes.push(listNode);
           break;
         }
+        case "FIGURE":
+          // console.log("figure", element);
+          if (element.classList.contains("quote")) {
+            const customQuotecontainer = $createCustomQuoteContainerhNode();
+            element.childNodes.forEach((node) => {
+              const childEl = node as HTMLElement;
+              if (childEl.tagName === "BLOCKQUOTE") {
+                // console.log('hi from ', childEl)
+                const quote = $createQuoteNode();
+                quote.append($createTextNode(childEl.textContent || ""));
+                customQuotecontainer.append(quote);
+              }
+            });
+            nodes.push(customQuotecontainer);
+          }
+          break;
         default: {
-          // Fallback to paragraph for any unhandled tags
           const paragraphNode = $createParagraphNode();
           paragraphNode.append($createTextNode(element.textContent || ""));
           nodes.push(paragraphNode);
