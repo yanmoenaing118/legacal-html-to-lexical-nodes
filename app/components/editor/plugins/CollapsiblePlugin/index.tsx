@@ -145,7 +145,7 @@ export default function CollapsiblePlugin(): null {
             );
             container.insertAfter(newContainer);
             // newContainer.getFirstDescendant<LexicalNode>()?.select();
-            newContainer.getFirstChild<LexicalNode>()?.select()
+            // newContainer.getFirstChild<LexicalNode>()?.select()
           });
           return true;
         }

@@ -1,17 +1,19 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import { EditorState } from "lexical";
-import { useCallback } from "react";
-import { $generateHtmlFromNodes } from "@lexical/html";
+import { $getRoot, $insertNodes, EditorState } from "lexical";
+import { useCallback, useEffect } from "react";
+import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
+import { htmlStirng } from "@/data";
+import { memo } from "react";
 
-export default function EditorOnChangePlugin() {
+function EditorOnChangePlugin() {
   const [editor] = useLexicalComposerContext();
 
   const handleEditorOnChange = useCallback(
     (v: EditorState) => {
       v.read(() => {
         const html = $generateHtmlFromNodes(editor);
-        // console.log(html);
+        console.log(html);
       });
     },
     [editor]
@@ -19,3 +21,5 @@ export default function EditorOnChangePlugin() {
 
   return <OnChangePlugin onChange={handleEditorOnChange} />;
 }
+
+export default memo(EditorOnChangePlugin);

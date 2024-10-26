@@ -26,6 +26,26 @@ body {
   }
 }
 
-.Collapsible__title br:nth-child(2) {
-  display: none;
+h1 {
+  @apply text-5xl font-extrabold;
+}
+
+h2 {
+  @apply text-4xl font-bold dark:text-white;
+}
+
+h3 {
+  @apply text-3xl font-bold dark:text-white;
+}
+
+h4 {
+  @apply text-2xl font-bold dark:text-white
+}
+
+h5 {
+  @apply text-xl font-bold dark:text-white;
+}
+
+h6 {
+  @apply text-lg font-bold dark:text-white;
 }
