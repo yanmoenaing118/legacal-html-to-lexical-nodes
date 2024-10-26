@@ -39,7 +39,7 @@ h3 {
 }
 
 h4 {
-  @apply text-2xl font-bold dark:text-white
+  @apply text-2xl font-bold dark:text-white;
 }
 
 h5 {
@@ -48,4 +48,20 @@ h5 {
 
 h6 {
   @apply text-lg font-bold dark:text-white;
+}
+
+p {
+  @apply text-[20px] dark:text-white;
+}
+
+ul {
+  @apply list-disc pl-5
+}
+
+a {
+  @apply text-red-500 underline cursor-pointer
+}
+
+ol {
+  @apply list-decimal pl-6
 }

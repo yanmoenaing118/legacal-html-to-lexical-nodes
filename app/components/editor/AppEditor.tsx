@@ -21,9 +21,13 @@ import { AutoLinkNode, LinkNode } from "@lexical/link";
 import { ListItemNode, ListNode } from "@lexical/list";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
+import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
+import CollapsiblePlugin from "./plugins/CollapsiblePlugin";
+import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 export default function AppEditor() {
   const config: InitialConfigType = {
     namespace: "AppEditor",
+    // editable: false,
     nodes: [
       CollapsibleContainerNode,
       CollapsibleTitleNode,
@@ -32,11 +36,11 @@ export default function AppEditor() {
       ListNode,
       ListItemNode,
       QuoteNode,
-      CodeNode,
-      CodeHighlightNode,
-      TableNode,
-      TableCellNode,
-      TableRowNode,
+      // CodeNode,
+      // CodeHighlightNode,
+      // TableNode,
+      // TableCellNode,
+      // TableRowNode,
       AutoLinkNode,
       LinkNode,
     ],
@@ -54,7 +58,7 @@ export default function AppEditor() {
   return (
     <div className="AppEditor max-w-xl mx-auto">
       <LexicalComposer initialConfig={config}>
-        <ToolbarPlugin />
+        {/* <ToolbarPlugin /> */}
         <InitDataPlugin />
         <RichTextPlugin
           contentEditable={
@@ -65,8 +69,10 @@ export default function AppEditor() {
         />
         <EditorOnChangePlugin />
         <HistoryPlugin />
+        <LinkPlugin />
+        <ListPlugin />
 
-        {/* <CollapsiblePlugin />ß */}
+        <CollapsiblePlugin />
       </LexicalComposer>
     </div>
   );
