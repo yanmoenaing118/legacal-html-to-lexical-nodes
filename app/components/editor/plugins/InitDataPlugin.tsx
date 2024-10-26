@@ -1,7 +1,6 @@
 import { htmlStirng } from "@/data";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useEffect, useRef } from "react";
-import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
 
 import {
   $createParagraphNode,
@@ -12,8 +11,10 @@ import {
   $insertNodes,
   LexicalNode,
 } from "lexical";
-
+import { $generateNodesFromDOM } from "@lexical/html";
 import { $createHeadingNode, HeadingTagType } from "@lexical/rich-text";
+import { $createListNode, $createListItemNode, ListType } from "@lexical/list";
+import { $createLinkNode } from "@lexical/link";
 
 function customGenerateNodesFromDOM(
   editor: LexicalEditor,
@@ -41,8 +42,61 @@ function customGenerateNodesFromDOM(
         }
         case "P": {
           const paragraphNode = $createParagraphNode();
-          paragraphNode.append($createTextNode(element.textContent || ""));
+          element.childNodes.forEach((childNode) => {
+            const childEl = childNode as HTMLElement;
+            if (childEl.tagName === "A") {
+              const href = childEl.getAttribute("href") || "#";
+              const linkNode = $createLinkNode(href);
+              linkNode.append($createTextNode(childEl.textContent || ""));
+              paragraphNode.append(linkNode);
+            } else {
+              paragraphNode.append(
+                $createTextNode((childEl as HTMLElement).textContent || "")
+              );
+            }
+          });
+
+          // paragraphNode.append($createTextNode(element.textContent || ""));
           nodes.push(paragraphNode);
+          break;
+        }
+        case "A": {
+          const href = element.getAttribute("href") || "#";
+          const linkNode = $createLinkNode(href);
+          linkNode.append($createTextNode(element.textContent || ""));
+          nodes.push(linkNode);
+          break;
+        }
+        case "UL":
+        case "OL": {
+          const listNode = $createListNode(
+            element.tagName.toLowerCase() as ListType
+          );
+          element.childNodes.forEach((childNode) => {
+            if (
+              childNode.nodeType === Node.ELEMENT_NODE &&
+              (childNode as HTMLElement).tagName === "LI"
+            ) {
+              const listItemNode = $createListItemNode();
+
+              childNode.childNodes.forEach((node) => {
+                const childEl = node as HTMLElement;
+                if (childEl.tagName === "A") {
+                  const href = childEl.getAttribute("href") || "#";
+                  const linkNode = $createLinkNode(href);
+                  linkNode.append($createTextNode(childEl.textContent || ""));
+                  listItemNode.append(linkNode);
+                } else {
+                  listItemNode.append(
+                    $createTextNode((node as HTMLElement).textContent || "")
+                  );
+                }
+              });
+
+              listNode.append(listItemNode);
+            }
+          });
+          nodes.push(listNode);
           break;
         }
         default: {

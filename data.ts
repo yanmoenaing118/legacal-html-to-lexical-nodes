@@ -6,16 +6,13 @@ export const htmlStirng = `
 <h5>Heading h5</h5>
 <h6>Heading h6</h6>
 <p>
-   Paragraph: Using the H6 tag is quite rare because it means that you’ve already used all heading from H1 to H5.<a href="https://www.google.com">Link inside a p tag</a>
+Paragraph: Using the <a href="https://www.google.com">P link 1</a> tag is quite rare because it means that you’ve already used all heading from H1 to H5.<a href="https://www.google.com">P link 2</a> P link 1
 </p>
-<a href="https://www.google.com">Standalone link</a>
 <ul>
   <li>Coffee ul</li>
   <li>Tea ul</li>
-  <li>
-  <a href="https://www.google.com">milk oil</a></li>
+  <li><a href="https://www.google.com">milk oil</a></li>
 </ul>
-
 <ol>
   <li>Coffee ol</li>
   <li>Tea ol</li>
@@ -25,7 +22,11 @@ export const htmlStirng = `
 <figure class="quote full" contenteditable="false">
    <blockquote>fdfssfsffsfsfsfsfsfsfsfsffsfsffsfsffsfsffsdfsfsfsfd fdfssfsffsfsfsfsfsfsfsfsffsfsffsfsffsfsffsdfsfsfsfd fdfssfsffsfsfsfsfsfsfsfsffsfsffsfsffsfsffsdfsfsfsfd fdfssfsffsfsfsfsfsfsfsfsffsfsffsfsffsfsffsdfsfsfsdd</blockquote>
    <figcaption>dddd</figcaption>
+   
 </figure>
+<a href="https://www.google.com">Standalone link</a>
+
 `;
+
 
 // export const htmlStirng = "<h2>hellos</h2>"
