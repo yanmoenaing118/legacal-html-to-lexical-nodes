@@ -12,10 +12,10 @@ function EditorOnChangePlugin() {
   const handleEditorOnChange = useCallback(
     (v: EditorState) => {
       v.read(() => {
-        const html = $generateHtmlFromNodes(editor);
+        const html = $generateHtmlFromNodes(editor, null);
         // console.log(html);
         const json = editor.getEditorState().toJSON();
-        console.log(json);
+        // console.log(json);
       });
     },
     [editor]
