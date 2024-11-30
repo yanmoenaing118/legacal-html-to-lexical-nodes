@@ -54,8 +54,6 @@ p {
   @apply text-base dark:text-white;
 }
 
-
-
 ul {
   @apply list-disc pl-5;
 }
