@@ -61,24 +61,15 @@ export default function AppEditor() {
   };
 
   return (
-    <div className="AppEditor max-w-xl mx-auto mb-96">
+    <div className="AppEditor max-w-3xl mx-auto mb-96 relative">
       <LexicalComposer initialConfig={config}>
-        <ToolbarPlugin />
-        <InitDataPlugin />
         <RichTextPlugin
           contentEditable={
-            <ContentEditable className="ContentEditable min-h-96 text-xl  ring-0 focus:ring-0 focus-within:ring-0 focus:outline-none" />
+            <ContentEditable className="ContentEditable min-h-96 text-base  ring-0 focus:ring-0 focus-within:ring-0 focus:outline-none z-20" />
           }
-          placeholder={<div>Placeholder</div>}
+          placeholder={<p className="absolute top-0 left-0 text-base">Start writing here ...</p>}
           ErrorBoundary={LexicalErrorBoundary}
         />
-        <EditorOnChangePlugin />
-        <HistoryPlugin />
-        <LinkPlugin />
-        <ListPlugin />
-
-        <CollapsiblePlugin />
-        <ImagePlugin />
       </LexicalComposer>
     </div>
   );

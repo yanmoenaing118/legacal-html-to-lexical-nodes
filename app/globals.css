@@ -51,12 +51,10 @@ h6 {
 }
 
 p {
-  @apply text-[20px] dark:text-white;
+  @apply text-base dark:text-white;
 }
 
-p + p {
-  @apply my-4
-}
+
 
 ul {
   @apply list-disc pl-5;
