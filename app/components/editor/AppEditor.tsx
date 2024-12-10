@@ -8,13 +8,15 @@ import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import TestPlugin from "./plugins/TestPlugin/TestPlugin";
+import { HighlightNode } from "./nodes/KeywordNode/KeywordNode";
+import KeywordsPlugin from "./plugins/KeywordPlugin/KeywordPlugin";
 
 
 export default function AppEditor() {
   const config: InitialConfigType = {
     namespace: "AppEditor",
     nodes: [
-
+      HighlightNode
     ],
     onError: (err) => {
       console.log(err);
@@ -33,6 +35,7 @@ export default function AppEditor() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <TestPlugin />
+        <KeywordsPlugin />
       </LexicalComposer>
     </div>
   );
