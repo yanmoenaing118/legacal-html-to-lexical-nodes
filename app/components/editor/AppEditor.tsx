@@ -10,17 +10,22 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import TestPlugin from "./plugins/TestPlugin/TestPlugin";
 import { HighlightNode } from "./nodes/KeywordNode/KeywordNode";
 import KeywordsPlugin from "./plugins/KeywordPlugin/KeywordPlugin";
-
+import {HashtagPlugin} from '@lexical/react/LexicalHashtagPlugin';
+import { HashtagNode } from "@lexical/hashtag"
+import ComponentPickerMenuPlugin from "./plugins/ComponentPickerPlugin/ComponentPickerPlugin";
 
 export default function AppEditor() {
   const config: InitialConfigType = {
     namespace: "AppEditor",
     nodes: [
-      HighlightNode
+      HashtagNode
     ],
     onError: (err) => {
       console.log(err);
     },
+    theme: {
+      hashtag: "hashtag"
+    }
 
   };
 
@@ -35,7 +40,8 @@ export default function AppEditor() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <TestPlugin />
-        <KeywordsPlugin />
+        <HashtagPlugin />
+        <ComponentPickerMenuPlugin />
       </LexicalComposer>
     </div>
   );

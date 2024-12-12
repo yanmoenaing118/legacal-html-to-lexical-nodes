@@ -69,3 +69,7 @@ ol {
 blockquote {
   @apply border-l-4 border-blue-500 pl-4 my-4;
 }
+
+.hashtag {
+  background-color: rgb(155, 195, 208);
+}
